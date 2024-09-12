@@ -1,4 +1,8 @@
 # Miscellaneous
+android/
+windows/
+linux/
+ios/
 *.class
 *.log
 *.pyc
