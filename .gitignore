@@ -3,6 +3,7 @@ android/
 windows/
 linux/
 ios/
+macos/
 *.class
 *.log
 *.pyc
