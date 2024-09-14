@@ -1,35 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:fundacaoama/components/card.dart';
+import 'package:fundacaoama/components/buttons.dart';
+import 'package:fundacaoama/screens/primeiro.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Testes de Cards"),
-        centerTitle: true,
+        title: Text('Tela de Inicio'),
       ),
-      body: Center(
-          child: Container(
-              child: Column(
-        children: [IconNameCard(
-        icon: Icons.local_drink,
-        name: 'Sede muita',
-        mensagem: 'Mãe eu quero cachaça',
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          InkWell(
+            child: ButtonCard(
+              icon: Icons.star,
+              icon2: null,
+              icon3: null,
+            ),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => Primeiro()));
+            },
+          ),
+          InkWell(
+            child: ButtonCard(
+              icon2: Icons.star,
+              icon3: Icons.star,
+            ),
+          ),
+          InkWell(
+            child: ButtonCard(
+              icon: Icons.star,
+              icon2: Icons.star,
+              icon3: Icons.star,
+            ),
+          )
+        ],
       ),
-      IconNameCard(
-        icon: Icons.bed,
-        name: 'Sono Muito',
-        mensagem: 'Mãe eu quero jogar no bicho',
-      )],
-      ))),
     );
   }
 }
