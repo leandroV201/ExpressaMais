@@ -1,42 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:fundacaoama/components/buttons.dart';
-import 'package:fundacaoama/screens/primeiro.dart';
+import 'package:fundacaoama/screens/homeFala.dart';
+import 'package:fundacaoama/screens/homeQuiz.dart';
 
-class HomeScreen extends StatelessWidget {
+class Homescreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Tela de Inicio'),
-      ),
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          InkWell(
-            child: ButtonCard(
-              icon: Icons.star,
-              icon2: null,
-              icon3: null,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Nome do App'),
+            InkWell(
+              onTap: (){Navigator.of(context).push(MaterialPageRoute(builder:(context) => HomeFala()));},
+              child: Container(
+                width: screenWidth * 0.35,
+                height: screenHeight * 0.2,
+                margin: EdgeInsets.only(top: 18.0),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.blueAccent),
+                ),
+                child: Center(child: Text("Fala")),
+              ),
             ),
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => Primeiro()));
-            },
-          ),
-          InkWell(
-            child: ButtonCard(
-              icon2: Icons.star,
-              icon3: Icons.star,
-            ),
-          ),
-          InkWell(
-            child: ButtonCard(
-              icon: Icons.star,
-              icon2: Icons.star,
-              icon3: Icons.star,
-            ),
-          )
-        ],
+            InkWell(
+              onTap: (){Navigator.of(context).push(MaterialPageRoute(builder:(context) => HomeQuiz()));},
+              child: Container(
+              width: screenWidth * 0.35,
+              height: screenHeight * 0.2,
+              margin: EdgeInsets.only(top: 18.0),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.blueAccent),
+              ),
+              child: Center(child: Text("Quiz")),
+            ),)
+          ],
+        ),
       ),
     );
   }

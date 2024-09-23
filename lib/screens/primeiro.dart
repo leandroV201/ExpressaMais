@@ -34,35 +34,35 @@ class _PrimeiroState extends State<Primeiro> {
               children: [
                 IconCard(
                   icon: Icons.local_drink,
-                  mensagem: 'Estou com sede',
+                  mensagem: 'Água',
                 ),
                 IconCard(
                   icon: Icons.bed,
-                  mensagem: 'Estou cansado',
+                  mensagem: 'Sono',
                 ),
                 IconCard(
                   icon: Icons.cookie,
-                  mensagem: 'Estou com fome',
+                  mensagem: 'Fome',
                 ),
                 IconCard(
                   icon: Icons.health_and_safety,
-                  mensagem: 'Estou me sentindo doente',
+                  mensagem: 'Doente',
                 ),
                 IconCard(
                   icon: Icons.shower,
-                  mensagem: 'Quero banhar',
+                  mensagem: 'Sujo',
                 ),
                 IconCard(
                   icon: Icons.help,
-                  mensagem: 'Não entendi',
+                  mensagem: 'Ajuda',
                 ),
                 IconCard(
                   icon: Icons.local_fire_department,
-                  mensagem: 'Estou com calor',
+                  mensagem: 'Quente',
                 ),
                 IconCard(
                   icon: Icons.mood_bad,
-                  mensagem: 'Estou Triste',
+                  mensagem: 'Triste',
                 ),
               ]
                   .map((card) => Container(

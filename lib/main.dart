@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fundacaoama/screens/homeScreen.dart';
+import 'package:fundacaoama/components/splashScreen.dart';
+
 
 
 void main() {
@@ -11,9 +12,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Center(
-          child: HomeScreen()
+          child: SplashScreen()
         ),
       ),
     );
