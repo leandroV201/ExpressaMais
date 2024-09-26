@@ -4,6 +4,8 @@ import 'package:fundacaoama/screens/homeScreen.dart';
 import 'package:fundacaoama/screens/quiz_screen.dart';
 
 class HomeQuiz extends StatefulWidget {
+  const HomeQuiz({super.key});
+
   @override
   _HomeQuizState createState() => _HomeQuizState();
 }
@@ -50,7 +52,7 @@ class _HomeQuizState extends State<HomeQuiz> {
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text('OK'),
+              child: const Text('OK'),
             ),
           ],
         );
@@ -63,11 +65,20 @@ class _HomeQuizState extends State<HomeQuiz> {
     // Pegar a largura e altura da tela
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-
+    
     return Scaffold(
       appBar: AppBar(
-        leading:IconButton(onPressed: (){Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Homescreen()));}, icon: Icon(Icons.arrow_back))
-        ,title: Text('Jogo de Quiz'),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const Homescreen()));
+            },
+            icon: const Icon(Icons.arrow_back)),
+        title: const Text(
+          "Quiz",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -75,20 +86,20 @@ class _HomeQuizState extends State<HomeQuiz> {
           children: [
             SizedBox(height: screenHeight * 0.05),
             Container(
-              padding: EdgeInsets.all(3),
-              decoration: BoxDecoration(color: Color(0xFFececf4)),
+              padding: const EdgeInsets.all(3),
               child: Text(
                 'Quantas pessoas irão jogar',
-                style: TextStyle(fontSize: screenWidth * 0.07),
-                 // Responsivo
+                style: TextStyle(
+                  fontSize: 34,
+                  fontWeight: FontWeight.bold
+                  ),
+                // Responsivo
                 textAlign: TextAlign.center,
-                
               ),
             ),
             SizedBox(height: screenHeight * 0.02),
             DecoratedBox(
               decoration: BoxDecoration(
-                
                 borderRadius: BorderRadius.circular(5),
               ),
               child: Padding(
@@ -98,7 +109,8 @@ class _HomeQuizState extends State<HomeQuiz> {
                 child: DropdownButton<int>(
                   isExpanded: true,
                   underline: Container(),
-                  style: TextStyle(fontSize: screenWidth * 0.05, color: Colors.black),
+                  style: TextStyle(
+                      fontSize: screenWidth * 0.05, color: Colors.black),
                   value: _numberOfPlayers,
                   items: [2, 3, 4].map((int value) {
                     return DropdownMenuItem<int>(
@@ -118,9 +130,10 @@ class _HomeQuizState extends State<HomeQuiz> {
                 ),
               ),
             ),
-            SizedBox(height: screenHeight * 0.02),
-            Container(
-              height: screenHeight * 0.4, // Responsivo
+            SizedBox(height: screenHeight * 0.05),
+            SizedBox(
+              height: screenHeight * 0.4,
+              width: screenWidth * 0.9, // Responsivo
               child: ListView.builder(
                 itemCount: _numberOfPlayers,
                 itemBuilder: (context, index) {
@@ -131,7 +144,12 @@ class _HomeQuizState extends State<HomeQuiz> {
                     ),
                     title: Text(
                       'Jogador ${index + 1}',
-                      style: TextStyle(fontSize: screenWidth * 0.05), // Responsivo
+                      style:
+                          TextStyle(
+                            fontSize: screenWidth * 0.05,
+                            fontFamily: 'Fredoka',
+                            fontWeight: FontWeight.bold,
+                            ), // Responsivo
                     ),
                     trailing: IconButton(
                       icon: Icon(
@@ -140,26 +158,41 @@ class _HomeQuizState extends State<HomeQuiz> {
                       ),
                       onPressed: () => _selectColor(index),
                     ),
-                    contentPadding: EdgeInsets.only(bottom: screenHeight * 0.02),
+                    contentPadding:
+                        EdgeInsets.only(bottom: screenHeight * 0.02),
                   );
                 },
               ),
             ),
             InkWell(
+              onTap: _startGame,
               child: Container(
-                decoration:
-                    BoxDecoration(border: Border.all(color: Colors.black)),
-                width: screenWidth * 0.8, // Responsivo
-                height: screenHeight * 0.1, // Responsivo
+                decoration: BoxDecoration(
+                  color:
+                      const Color.fromARGB(255, 165, 130, 189), // Cor de fundo
+                  border: Border.all(
+                    color:
+                        const Color.fromARGB(255, 255, 255, 255), // Cor da borda
+                        width: 2.0, // Aumenta a grossura da borda
+                  ),
+                  borderRadius:
+                      BorderRadius.circular(20), // Bordas arredondadas
+                ),
+                width: screenWidth * 0.6, // Responsivo
+                height: screenHeight * 0.1,
+                margin:
+                    EdgeInsets.only(bottom: screenHeight * 0.05), // Responsivo
                 child: Center(
                   child: Text(
-                    "Começar jogo",
-                    style: TextStyle(fontSize: screenWidth * 0.06), // Responsivo
+                    "Começar o jogo",
+                    style:
+                        TextStyle(
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                          fontSize: screenWidth * 0.06, 
+                          ), // Responsivo
                   ),
                 ),
-                margin: EdgeInsets.only(bottom: screenHeight * 0.05),
               ),
-              onTap: _startGame,
             )
           ],
         ),

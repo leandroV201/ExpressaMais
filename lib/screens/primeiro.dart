@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fundacaoama/components/card.dart';
 
 class Primeiro extends StatefulWidget {
-  const Primeiro({Key? key}) : super(key: key);
+  const Primeiro({super.key});
 
   @override
   State<Primeiro> createState() => _PrimeiroState();
@@ -16,11 +16,17 @@ class _PrimeiroState extends State<Primeiro> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.of(context).pop();
             }),
-        title: const Text("Cards de Fala"),
+        title: const 
+        Text(
+          "Cards de Fala",
+          style: TextStyle(
+            fontWeight: FontWeight.bold
+          ),
+          ),
         centerTitle: true,
       ),
       body: Container(
@@ -34,7 +40,7 @@ class _PrimeiroState extends State<Primeiro> {
               children: [
                 IconCard(
                   icon: Icons.local_drink,
-                  mensagem: 'Água',
+                  mensagem: 'Sede',
                 ),
                 IconCard(
                   icon: Icons.bed,
@@ -61,11 +67,19 @@ class _PrimeiroState extends State<Primeiro> {
                   mensagem: 'Quente',
                 ),
                 IconCard(
+                  icon: Icons.ac_unit,
+                  mensagem: 'Frio',
+                ),
+                IconCard(
                   icon: Icons.mood_bad,
                   mensagem: 'Triste',
                 ),
+                IconCard(
+                  icon: Icons.mood_sharp,
+                  mensagem: 'Feliz',
+                ),
               ]
-                  .map((card) => Container(
+                  .map((card) => SizedBox(
                         width: (screenWidth / 2) -
                             15, // Largura de cada card para caber 2 por linha
                         child: card,

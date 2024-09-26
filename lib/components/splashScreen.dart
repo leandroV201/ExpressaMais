@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:fundacaoama/screens/homeScreen.dart';
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
@@ -13,35 +15,33 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     // Delay de 2 segundos
-    Timer(Duration(seconds: 2), () {
+    Timer(const Duration(seconds: 2), () {
       // Navegar para a próxima tela após 2 segundos
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => Homescreen()),
+        MaterialPageRoute(builder: (_) => const Homescreen()),
       );
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
+      backgroundColor: Color(0xffAC87C5),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // Logo
-            Icon(
-              Icons.speaker,
-              size: 100,
-              color: Colors.blue,
-            ),
+            
             SizedBox(height: 20),
             // Nome do App
             Text(
-              "Jogo das falas",
+              "Expressa+",
               style: TextStyle(
-                fontSize: 30,
+                fontSize: 42,
                 fontWeight: FontWeight.bold,
-                color: Colors.blue,
+                color: Color.fromARGB(255, 255, 255, 255),
+                fontFamily: 'Fredoka',
               ),
             ),
           ],

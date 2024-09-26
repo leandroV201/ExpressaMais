@@ -6,7 +6,7 @@ class QuizScreen extends StatefulWidget {
   final int numberOfPlayers;
   final List<Color> playerColors;
 
-  QuizScreen({required this.numberOfPlayers, required this.playerColors});
+  const QuizScreen({super.key, required this.numberOfPlayers, required this.playerColors});
 
   @override
   _QuizScreenState createState() => _QuizScreenState();
@@ -16,17 +16,27 @@ class _QuizScreenState extends State<QuizScreen> {
   int _currentQuestionIndex = 0;
   int _currentPlayerIndex = 0;
   List<int> _scores = [];
-  List<IconData> _questions = [
+  final List<IconData> _questions = [
     Icons.bed,
     Icons.local_drink,
-    Icons.cookie
+    Icons.cookie,
+    Icons.shower,
+    Icons.local_fire_department,
+    Icons.health_and_safety,
+    Icons.mood_bad,
+    Icons.mood_sharp,
   ];
-  List<List<String>> _options = [
-    ['Estou com fome', 'Estou Cansado', 'Estou com preguiça', 'Estou triste'],
-    ['Estou cansado', 'Estou com calor', 'Estou com sede', 'Estou acordado'],
-    ['Berlin', 'Munich', 'Estou com medo', 'Estou com fome'],
+  final List<List<String>> _options = [
+    ['Fome', 'Cansado', 'Preguiça', 'Triste'],
+    ['Cansado', 'Calor', 'Sede', 'Acordado'],
+    ['Feliz', 'Frio', 'Medo', 'Fome'],
+    ['Triste', 'Preguiça', 'Calor', 'Sujo'],
+    ['Calor', 'Frio', 'Medo', 'Fome'],
+    ['Cansado', 'Doente', 'Entediado', 'Fome'],
+    ['Fome', 'Triste', 'Medo', 'Saudável'],
+    ['Feliz', 'Frio', 'Sede', 'Acordado'],
   ];
-  List<int> _correctAnswers = [1, 2, 3]; // Índice das respostas corretas
+  final List<int> _correctAnswers = [1, 2, 3, 3, 0, 1, 1, 0]; // Índice das respostas corretas
 
   List<String> _currentShuffledOptions = [];
   int _currentShuffledCorrectAnswer = 0;
@@ -108,7 +118,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quiz Game'),
+        title: const Text('Quiz Game'),
         backgroundColor: widget.playerColors[_currentPlayerIndex],
       ),
       body: Center(
@@ -148,7 +158,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     ),
                   ),
                 );
-              }).toList(),
+              }),
               SizedBox(height: screenHeight * 0.02),
               Text(
                 'Pontos dos Jogadores:',
@@ -157,7 +167,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: screenHeight * 0.02),
+              SizedBox(height: screenHeight * 0.01),
               // Exibe os pontos de todos os jogadores
               ..._scores.asMap().entries.map((entry) {
                 int idx = entry.key;
@@ -166,7 +176,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   'Jogador ${idx + 1}: $score pontos',
                   style: TextStyle(fontSize: screenWidth * 0.045), // Responsivo
                 );
-              }).toList(),
+              }),
             ],
           ),
         ),

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
-class IconCard extends StatelessWidget {
+class ImageCard extends StatelessWidget {
   final FlutterTts _tts = FlutterTts();
-  final IconData icon;
+  final String path;
   final String mensagem;
   _speak() async {
     await _tts.setLanguage("pt-BR");
     await _tts.speak(mensagem);
   }
 
-  IconCard({super.key, required this.icon, required this.mensagem});
+  ImageCard({super.key, required this.path, required this.mensagem});
 
   @override
   Widget build(BuildContext context) {
@@ -19,19 +19,15 @@ class IconCard extends StatelessWidget {
     return InkWell(
       child: Container(
       margin: EdgeInsets.only(left: screenWidth * 0.025 ),
-      width: screenWidth * 0.25,
-      height: screenHeight * 0.2, 
+      width: screenWidth * 0.3,
+      height: screenHeight * 0.24, 
         child: Card(
           color: const Color(0xFFA96FCA),
           elevation: 4.0, // elevação para sombra
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),// bordas arredondadas
           ),
-          child: Center(child: Icon(
-              icon,
-              size: 80.0, // tamanho do ícone
-              color: const Color.fromARGB(255, 0, 0, 0),
-            ),
+          child: Center(child: Image.asset(path, width: screenHeight *0.23, height: screenHeight *0.27,)
           ),
         ),
       ),
