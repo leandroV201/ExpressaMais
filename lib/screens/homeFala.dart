@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fundacaoama/components/buttons.dart';
 import 'package:fundacaoama/screens/primeiro.dart';
+import 'package:fundacaoama/screens/segundo.dart';
 import 'package:fundacaoama/screens/terceiro.dart';
 
 class HomeFala extends StatefulWidget {
@@ -36,7 +37,10 @@ class _HomeFalaState extends State<HomeFala> {
               child: ButtonCard(
                 icon2: Icons.star,
                 icon3: Icons.star,
-              ),
+              ),onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Segundo()));
+              },
             ),
             InkWell(
              
@@ -46,7 +50,7 @@ class _HomeFalaState extends State<HomeFala> {
                 icon3: Icons.star,
               ), onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Terceiro()));
+                    MaterialPageRoute(builder: (context) => const Terceiro()));
               },
             )
           ],
